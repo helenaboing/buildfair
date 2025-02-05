@@ -1,0 +1,28 @@
+{
+    "name": "@buildfair/contracts",
+    "version": "0.1.0",
+    "description": "Smart contracts for BuildFair construction agreements",
+    "scripts": {
+        "build": "forge build",
+        "test": "forge test",
+        "deploy:local": "forge script script/Deploy.s.sol --rpc-url http://localhost:8545 --broadcast",
+        "deploy:testnet": "forge script script/Deploy.s.sol --rpc-url $RPC_URL --broadcast --verify",
+        "lint": "forge fmt && solhint 'src/**/*.sol'",
+        "coverage": "forge coverage",
+        "clean": "forge clean",
+        "size": "forge build --sizes"
+    },
+    "keywords": [
+        "ethereum",
+        "smart-contracts",
+        "solidity",
+        "construction",
+        "buildfair"
+    ],
+    "author": "BuildFair Team",
+    "license": "MIT",
+    "devDependencies": {
+        "@openzeppelin/contracts": "^5.0.1",
+        "solhint": "^4.1.1"
+    }
+}
