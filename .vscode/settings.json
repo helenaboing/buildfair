@@ -1,0 +1,54 @@
+{
+  // Solidity settings
+  "solidity.packageDefaultDependenciesContractsDirectory": "src",
+  "solidity.packageDefaultDependenciesDirectory": "lib",
+  "solidity.compileUsingRemoteVersion": "v0.8.23",
+  "solidity.formatter": "forge",
+  // Editor settings for Solidity
+  "[solidity]": {
+    "editor.defaultFormatter": "JuanBlanco.solidity",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
+  },
+  // Foundry settings
+  "files.associations": {
+    "*.sol": "solidity"
+  },
+  // Search settings
+  "search.exclude": {
+    "lib": true,
+    "cache": true,
+    "out": true,
+    "cache_forge": true,
+    "**/node_modules": true
+  },
+  // File exclude settings
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "cache/": true,
+    "cache_forge/": true,
+    "out/": true
+  },
+  // Recommended extensions
+  "extensions.ignoreRecommendations": false,
+  // Git settings
+  "git.ignoreLimitWarning": true,
+  // Formatting settings
+  "editor.formatOnSave": true,
+  "editor.rulers": [
+    100
+  ],
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  // TypeScript settings for the web app
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
+}

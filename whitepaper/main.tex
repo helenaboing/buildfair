@@ -1,0 +1,147 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{emoji}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\title{BuildFair: Construction Contract with Jury}
+\author{BuildFair Team}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+BuildFair is a smart contract solution for the construction industry that ensures smooth relationships between buyers, sellers, and jurors. It provides transparency, milestone tracking, and a built-in dispute resolution system, making construction agreements transparent, fair, and secure.
+\end{abstract}
+
+\section{Overview}
+BuildFair ensures that payments are only made once milestones are achieved and provides a jury system to resolve disputes. This eliminates grey areas and establishes clear, trusted agreements between parties.
+
+\section{Features}
+\begin{itemize}
+    \item \textbf{Buyer:} Funds the contract and approves completed work
+    \item \textbf{Seller:} Marks milestones as completed and receives payments once verified
+    \item \textbf{Jury:} A neutral party who steps in if there's a dispute, helping to resolve any issues fairly
+\end{itemize}
+
+\section{Roles}
+\begin{table}[h]
+\begin{tabular}{ll}
+\toprule
+\textbf{Role} & \textbf{Description} \\
+\midrule
+Buyer & The one funding the project and verifying if the work is completed \\
+Seller & The one doing the hard work and completing the construction milestones \\
+Jury & The trusted third-party mediator who settles any disputes \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Contract States}
+\begin{itemize}
+    \item \textbf{Created:} The contract is created, but not yet funded
+    \item \textbf{Funded:} The buyer has funded the contract
+    \item \textbf{InProgress:} The seller has marked a milestone as completed, and the buyer is reviewing it
+    \item \textbf{Completed:} The milestone is approved, and payment is made
+    \item \textbf{Disputed:} A dispute is raised—time for the jury to step in
+    \item \textbf{Closed:} The contract is completed or resolved, and the funds are disbursed
+\end{itemize}
+
+\section{Functions}
+\begin{itemize}
+    \item \texttt{fundContract()}: The buyer funds the contract
+    \item \texttt{markMilestoneCompleted()}: The seller marks a milestone as complete
+    \item \texttt{approveMilestone()}: The buyer approves the milestone and makes a payment
+    \item \texttt{raiseDispute()}: Either party can raise a dispute if something's not right
+    \item \texttt{resolveDispute()}: The jury resolves the dispute and decides who gets the money
+    \item \texttt{endContract()}: The contract ends, either by successful completion or dispute resolution
+\end{itemize}
+
+\section{Deployment Guide}
+
+\subsection{Prerequisites}
+\begin{itemize}
+    \item Solidity version 0.8.0 or higher
+    \item Ethereum Wallet: MetaMask or another wallet to interact with the contract
+    \item Ethereum Node: A test network (e.g., Rinkeby, Goerli) or mainnet
+\end{itemize}
+
+\subsection{Deployment Steps}
+\begin{enumerate}
+    \item \textbf{Install Dependencies}
+    
+    Install Truffle or Hardhat for deployment:
+    \begin{lstlisting}[language=bash]
+npm install -g truffle
+# or
+npm install --save-dev hardhat
+    \end{lstlisting}
+
+    \item \textbf{Create the Contract}
+    \begin{itemize}
+        \item Add the smart contract code in the \texttt{contracts/} directory
+        \item Example: \texttt{contracts/ConstructionContract.sol}
+    \end{itemize}
+
+    \item \textbf{Deploy the Contract}
+    
+    Using Truffle:
+    \begin{lstlisting}[language=JavaScript]
+const ConstructionContract = artifacts.require("ConstructionContract");
+
+module.exports = function (deployer) {
+  deployer.deploy(ConstructionContract, sellerAddress, juryAddress, 
+    contractAmount, milestoneAmount);
+};
+    \end{lstlisting}
+
+    Using Hardhat:
+    \begin{lstlisting}[language=JavaScript]
+async function main() {
+  const [deployer] = await ethers.getSigners();
+  const ConstructionContract = await ethers.getContractFactory(
+    "ConstructionContract"
+  );
+
+  const contract = await ConstructionContract.deploy(
+    sellerAddress, juryAddress, contractAmount, milestoneAmount
+  );
+  console.log("Contract deployed to:", contract.address);
+}
+
+main();
+    \end{lstlisting}
+
+    \item \textbf{Interact with the Contract}
+    \begin{itemize}
+        \item Use Web3.js or Ethers.js to interact with the contract once deployed
+    \end{itemize}
+\end{enumerate}
+
+\section{Example Use Case}
+\begin{enumerate}
+    \item Buyer funds the contract with 10 ETH
+    \item Seller completes the first milestone
+    \item Buyer approves the milestone and pays the seller 2 ETH
+    \item If the Seller disagrees or there's a problem, a dispute is raised
+    \item The Jury resolves the dispute and decides who gets the funds
+\end{enumerate}
+
+\section{Security Considerations}
+\begin{itemize}
+    \item Make sure your jury is a trusted party who can resolve disputes fairly
+    \item Verify milestones carefully to avoid conflicts or fraudulent claims
+    \item Gas Fees: Be mindful of the Ethereum gas costs when deploying and interacting with the contract on the blockchain
+\end{itemize}
+
+\section{License}
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+\section{Contact}
+Have questions or feedback? Reach out to us at \href{mailto:your-email@example.com}{your-email@example.com}
+
+\end{document}

@@ -1,0 +1,24 @@
+{
+  "recommendations": [
+    // Solidity & Ethereum
+    "JuanBlanco.solidity",
+    "tintinweb.solidity-visual-auditor",
+    "ms-vscode.vscode-typescript-next",
+    // Testing & Development
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "streetsidesoftware.code-spell-checker",
+    // Git & Collaboration
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    // Foundry specific
+    "foundry-rs.solidity-language",
+    // Markdown & Documentation
+    "yzhang.markdown-all-in-one",
+    "bierner.markdown-emoji",
+    // TypeScript & React
+    "dsznajder.es7-react-js-snippets",
+    "bradlc.vscode-tailwindcss"
+  ],
+  "unwantedRecommendations": []
+}

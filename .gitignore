@@ -1,0 +1,87 @@
+# Dependencies
+node_modules/
+buildfair-app/node_modules/
+.pnpm-store/
+.npm
+
+# Build outputs
+**/dist/
+**/build/
+
+# Next.js specific
+buildfair-app/.next/
+buildfair-app/out/
+buildfair-app/.vercel/
+buildfair-app/next-env.d.ts
+.turbo
+
+# Foundry & Solidity (root level ignores)
+**/out/
+**/cache/
+**/cache_forge/
+**/artifacts/
+**/typechain-types/
+**/broadcast/*/*/
+!**/broadcast/*/.chainId
+**/.coverage_*/
+
+# Environment & Secrets
+**/.env
+**/.env*.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# IDE & Editor files
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.sublime-project
+*.sublime-workspace
+**/.DS_Store
+*.pem
+.history
+
+# Debug logs
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/.pnpm-debug.log*
+**/debug.log
+
+# Testing
+**/coverage/
+**/.nyc_output/
+**/test-results/
+**/lcov.info
+
+# Documentation
+docs/
+whitepaper/*.aux
+whitepaper/*.log
+whitepaper/*.out
+whitepaper/*.pdf
+whitepaper/*.synctex.gz
+whitepaper/*.toc
+
+# Misc
+**/*.log
+**/*.tsbuildinfo
+**/.eslintcache
+**/.stylelintcache
+
+# Nix
+result
+result-*
+.direnv/
+
+# Temporary files
+**/*.swp
+**/*.swo
+**/*~
+
+# Keep
+!.github/
+!.vscode/settings.json
+!.vscode/extensions.json 

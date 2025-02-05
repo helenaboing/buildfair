@@ -1,0 +1,61 @@
+name: BuildFair CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  whitepaper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Build
+        working-directory: whitepaper
+        run: |
+          pdflatex main.tex
+          mv main.pdf ../buildfair.pdf
+      - name: Deploy
+        uses: actions/deploy@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          branch: main
+          path: buildfair.pdf
+
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          cd contract
+          npm install
+      - name: Build
+        working-directory: contract
+        run: |
+          npx hardhat compile
+      - name: Deploy
+        uses: actions/deploy@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          branch: main
+          path: buildfair.pdf
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        working-directory: buildfair-app
+        run: |
+          npm install -g pnpm
+          pnpm install
+      - name: Test
+        working-directory: buildfair-app
+        run: |
+          pnpm test
