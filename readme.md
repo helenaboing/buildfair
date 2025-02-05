@@ -1,24 +1,28 @@
 # 🛠️ BuildFair: Construction Contract with Jury 🏗️
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/212f8524-c1dd-45ab-a855-db003d25aca4/deploy-status)](https://app.netlify.com/sites/buildfair/deploys)
+
 Welcome to BuildFair—your smart contract solution for secure, transparent, and fair construction agreements between buyers, sellers, and jurors.
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Roles](#roles)
-- [Contract States](#contract-states)
-- [Functions](#functions)
-- [Deployment Guide](#deployment-guide)
-  - [Prerequisites](#prerequisites)
-  - [Deployment Steps](#deployment-steps)
-- [Example Use Case](#example-use-case)
-- [Security Considerations](#security-considerations)
-- [Development Setup](#development-setup)
-  - [Using Nix (Recommended)](#using-nix-recommended)
-  - [Manual Setup (Alternative)](#manual-setup-alternative)
-- [License](#license)
-- [Contact](#contact)
+- [🛠️ BuildFair: Construction Contract with Jury 🏗️](#️-buildfair-construction-contract-with-jury-️)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Features](#features)
+  - [Roles](#roles)
+  - [Contract States](#contract-states)
+  - [Functions](#functions)
+  - [Deployment Guide](#deployment-guide)
+    - [Prerequisites](#prerequisites)
+    - [Deployment Steps](#deployment-steps)
+  - [Example Use Case](#example-use-case)
+  - [Security Considerations](#security-considerations)
+  - [Development Setup](#development-setup)
+    - [Using Nix (Recommended)](#using-nix-recommended)
+    - [Manual Setup (Alternative)](#manual-setup-alternative)
+  - [License](#license)
+  - [Contact](#contact)
 
 ## Overview
 
