@@ -52,6 +52,7 @@
     "editor.formatOnSave": true
   },
   "cSpell.words": [
-    "buildfair"
+    "buildfair",
+    "pdflatex"
   ]
 }
