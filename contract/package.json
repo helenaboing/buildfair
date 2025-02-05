@@ -10,7 +10,10 @@
         "lint": "forge fmt && solhint 'src/**/*.sol'",
         "coverage": "forge coverage",
         "clean": "forge clean",
-        "size": "forge build --sizes"
+        "size": "forge build --sizes",
+        "hardhat:compile": "hardhat compile",
+        "hardhat:test": "hardhat test",
+        "hardhat:node": "hardhat node"
     },
     "keywords": [
         "ethereum",
@@ -22,8 +25,15 @@
     "author": "BuildFair Team",
     "license": "MIT",
     "devDependencies": {
+        "@ethersproject/abi": "^5.7.0",
+        "@ethersproject/providers": "^5.7.2",
+        "@nomicfoundation/hardhat-toolbox": "^5.0.0",
         "@openzeppelin/contracts": "^5.0.1",
-        "@wagmi/cli": "^1.5.2",
-        "solhint": "^4.1.1"
+        "@wagmi/cli": "^2.2.0",
+        "ethers": "^6.11.1",
+        "hardhat": "^2.22.18",
+        "solhint": "^4.1.1",
+        "typescript": "^5.3.3",
+        "ws": "^8.16.0"
     }
 }
