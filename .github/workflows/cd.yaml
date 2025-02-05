@@ -16,13 +16,25 @@ jobs:
         run: |
           pdflatex main.tex
           mv main.pdf ../buildfair.pdf
-      - name: Deploy
-        uses: actions/deploy@v4
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          branch: main
-          path: buildfair.pdf
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }} ${{ github.event.head_commit.message }}
+          draft: false
+          prerelease: false
+      - name: Upload Whitepaper
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./buildfair.pdf
+          asset_name: buildfair.pdf
+          asset_content_type: application/pdf
 
   contract:
     runs-on: ubuntu-latest
@@ -30,20 +42,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install dependencies
+        working-directory: contract
         run: |
-          cd contract
           npm install
       - name: Build
         working-directory: contract
         run: |
           npx hardhat compile
-      - name: Deploy
-        uses: actions/deploy@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          branch: main
-          path: buildfair.pdf
+      - name: Lint
+        working-directory: contract
+        run: |
+          npx hardhat lint
+      - name: Test
+        working-directory: contract
+        run: |
+          npx hardhat test
 
   frontend:
     runs-on: ubuntu-latest
@@ -55,7 +68,7 @@ jobs:
         run: |
           npm install -g pnpm
           pnpm install
-      - name: Test
+      - name: Lint
         working-directory: buildfair-app
         run: |
-          pnpm test
+          pnpm lint
