@@ -42,9 +42,6 @@
             
             # Documentation
             texlive.combined.scheme-full
-            
-            # Testing
-            nodePackages.jest
           ];
 
           shellHook = ''

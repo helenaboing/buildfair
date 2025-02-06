@@ -51,6 +51,15 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
+  // Terminal settings
+  "terminal.integrated.defaultProfile.osx": "nix develop",
+  "terminal.integrated.profiles.osx": {
+    "nix develop": {
+      "path": "/nix/var/nix/profiles/default/bin/nix",
+      "args": ["--experimental-features", "nix-command flakes", "develop", ".."],
+      "cwd": "${workspaceFolder}"
+    }
+  },
   "cSpell.words": [
     "buildfair",
     "pdflatex"

@@ -74,6 +74,10 @@ jobs:
         run: |
           npm install -g pnpm
           pnpm install
+      - name: Set up environment variables
+        working-directory: buildfair-app
+        run: |
+          cp .env.example .env
       - name: Lint
         working-directory: buildfair-app
         run: |
