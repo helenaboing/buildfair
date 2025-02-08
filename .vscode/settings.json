@@ -56,12 +56,15 @@
   "terminal.integrated.profiles.osx": {
     "nix develop": {
       "path": "/nix/var/nix/profiles/default/bin/nix",
-      "args": ["--experimental-features", "nix-command flakes", "develop", ".."],
+      "args": ["develop"],
       "cwd": "${workspaceFolder}"
     }
   },
   "cSpell.words": [
     "buildfair",
     "pdflatex"
-  ]
+  ],
+  // Word wrap settings
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 100
 }

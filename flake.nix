@@ -45,12 +45,14 @@
           ];
 
           shellHook = ''
+            echo " "
             echo "🛠️  Welcome to BuildFair Development Environment 🏗️"
             echo "Available tools:"
             echo "  • Node.js $(node --version)"
             echo "  • pnpm $(pnpm --version)"
             echo "  • Foundry $(forge --version)"
             echo "  • Solc $(solc --version)"
+            echo " "
             
             # Local npm configuration
             export PATH="$PWD/node_modules/.bin:$PATH"

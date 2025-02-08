@@ -18,7 +18,11 @@
     "bierner.markdown-emoji",
     // TypeScript & React
     "dsznajder.es7-react-js-snippets",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    // LaTeX, PDF, etc.
+    "James-Yu.latex-workshop",
+    "ms-vscode.pdf",
+
   ],
   "unwantedRecommendations": []
 }

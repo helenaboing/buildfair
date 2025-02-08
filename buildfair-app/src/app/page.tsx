@@ -18,7 +18,7 @@ export default function HomePage() {
               🛠️
             </span>
             <h1 className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              Build<span className="text-[hsl(120,100%,70%)]">Fair</span>
+              Build<span className="text-[#CF3E13]">Fair</span>
             </h1>
             <span className="animate-in fade-in slide-in-from-bottom-3 duration-1000">
               🏗️
@@ -31,7 +31,7 @@ export default function HomePage() {
           <div className="animate-in fade-in slide-in-from-bottom-6 mt-8 flex gap-4 duration-1000">
             <Link
               href="/create-contract"
-              className="rounded-full bg-[hsl(120,100%,70%)] px-8 py-3 font-semibold text-black transition-colors hover:bg-[hsl(120,100%,75%)]"
+              className="rounded-full bg-[#CF3E13] px-8 py-3 font-semibold text-black transition-colors hover:bg-[#E04518]"
             >
               Get Started →
             </Link>
@@ -51,7 +51,7 @@ export default function HomePage() {
             href="/create-contract"
           >
             <div className="flex items-center gap-2">
-              <FileText className="h-6 w-6 text-[hsl(120,100%,70%)]" />
+              <FileText className="h-6 w-6 text-[#CF3E13]" />
               <h3 className="text-2xl font-bold">Create Contract</h3>
             </div>
             <div className="text-lg text-gray-200">
@@ -64,7 +64,7 @@ export default function HomePage() {
             href="/manage-contract"
           >
             <div className="flex items-center gap-2">
-              <Building2 className="h-6 w-6 text-[hsl(120,100%,70%)]" />
+              <Building2 className="h-6 w-6 text-[#CF3E13]" />
               <h3 className="text-2xl font-bold">Manage Contract</h3>
             </div>
             <div className="text-lg text-gray-200">
@@ -77,7 +77,7 @@ export default function HomePage() {
             href="/documentation"
           >
             <div className="flex items-center gap-2">
-              <BookOpen className="h-6 w-6 text-[hsl(120,100%,70%)]" />
+              <BookOpen className="h-6 w-6 text-[#CF3E13]" />
               <h3 className="text-2xl font-bold">Documentation</h3>
             </div>
             <div className="text-lg text-gray-200">
