@@ -22,7 +22,9 @@
     // LaTeX, PDF, etc.
     "James-Yu.latex-workshop",
     "ms-vscode.pdf",
-
+    // CI CD
+    "github.vscode-github-actions",
+    "github.github-actions"
   ],
   "unwantedRecommendations": []
 }
