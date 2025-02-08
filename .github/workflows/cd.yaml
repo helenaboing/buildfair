@@ -56,11 +56,15 @@ jobs:
       - name: Build
         working-directory: contract
         run: |
-          npx hardhat compile
+          npm run build
+      - name: Lint
+        working-directory: contract
+        run: |
+          npm run lint
       - name: Test
         working-directory: contract
         run: |
-          npx hardhat test
+          npm run test
 
   frontend:
     runs-on: ubuntu-latest
