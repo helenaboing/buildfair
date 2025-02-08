@@ -18,8 +18,6 @@ Welcome to BuildFair—your smart contract solution for secure, transparent, and
   - [Deployment Guide](#deployment-guide)
     - [Prerequisites](#prerequisites)
     - [Deployment Steps](#deployment-steps)
-  - [Example Use Case](#example-use-case)
-  - [Security Considerations](#security-considerations)
   - [Development Setup](#development-setup)
     - [Using Nix (Recommended)](#using-nix-recommended)
     - [Manual Setup (Alternative)](#manual-setup-alternative)
@@ -83,62 +81,32 @@ The diagram above illustrates how users interact with the BuildFair protocol, sh
 
 - Solidity version 0.8.0 or higher.
 - Ethereum Wallet (e.g., MetaMask) for managing transactions.
-- Access to an Ethereum Node (testnet like Rinkeby/Goerli or mainnet).
+- Access to an Ethereum Node (testnet like Goerli or Sepolia).
 
 ### Deployment Steps
 
-1. **Install Dependencies**
+1. **Access Remix IDE**
+   - Visit [Remix IDE](https://remix.ethereum.org)
+   - Click "Clone Git Repository"
+   - Enter `https://github.com/helenaboing/buildfair`
+   - Navigate to `contract/src/BuildFair.sol`
 
-   Install either Truffle or Hardhat:
-   ```bash
-   npm install -g truffle
-   # or
-   npm install --save-dev hardhat
-   ```
+2. **Compile the Contract**
+   - Select Solidity Compiler (version 0.8.13 or higher)
+   - Click "Compile BuildFair.sol"
 
-2. **Create the Project**
+3. **Deploy the Contract**
+   - Go to "Deploy & Run Transactions"
+   - Connect MetaMask to your chosen network
+   - Select "Injected Provider - MetaMask"
+   - Enter constructor parameters:
+     - `sellerAddress`: Address of the seller
+     - `projectAmount`: Amount in wei
+   - Click "Deploy"
 
-   Place your smart contract code in the `contracts/` directory (e.g., `contracts/BuildFairProject.sol`).
-
-3. **Deploy the Project**
-
-   **Using Truffle:**
-   ```javascript
-   const BuildFairProject = artifacts.require("BuildFairProject");
-
-   module.exports = function (deployer) {
-     deployer.deploy(BuildFairProject, sellerAddress, juryAddress, projectAmount);
-   };
-   ```
-
-   **Using Hardhat:**
-   ```javascript
-   async function main() {
-     const [deployer] = await ethers.getSigners();
-     const BuildFairProject = await ethers.getContractFactory("BuildFairProject");
-     const project = await BuildFairProject.deploy(sellerAddress, juryAddress, projectAmount);
-     console.log("Project deployed to:", project.address);
-   }
-   
-   main();
-   ```
-
-4. **Interact with the Project**
-
-   Utilize Web3.js or Ethers.js to interact with the deployed project.
-
-## Example Use Case
-
-1. **Funding**: Buyer deposits ETH into the project 💰.
-2. **Work Completion**: Seller submits evidence for completed work 🏗️.
-3. **Approval & Payment**: Buyer validates the work and releases payment to the seller 💸.
-4. **Completion**: Process continues until all work is completed and the project is closed 🔒.
-
-## Security Considerations
-
-- **Trusted Jury**: Select a credible and unbiased jury for dispute resolution.
-- **Verification Process**: Rigorously verify work completion to avoid fraudulent claims.
-- **Gas Fees**: Monitor Ethereum gas fees during deployments and transactions.
+4. **Interact with the Contract**
+   - Use Remix's interface to call contract functions
+   - All transactions will require MetaMask confirmation
 
 ## Development Setup
 
