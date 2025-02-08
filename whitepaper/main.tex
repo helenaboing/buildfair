@@ -7,6 +7,36 @@
 \usepackage{xcolor}
 \usepackage{geometry}
 
+% Define Solidity language for listings
+\lstdefinelanguage{Solidity}{
+  keywords={
+    function, public, private, contract, address, mapping, struct, modifier,
+    if, else, for, while, do, break, continue, return, returns, true, false,
+    new, delete, uint, uint256, string, bool, bytes, bytes32, internal, storage,
+    memory, payable, view, pure, constant, anonymous, indexed, interface
+  },
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  string=[b]",
+  morestring=[b]'
+}
+
+% Set default listing style
+\lstset{
+  frame=single,
+  breaklines=true,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{green!60!black},
+  stringstyle=\color{purple},
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  showstringspaces=false,
+  tabsize=2
+}
+
 \geometry{
     a4paper,
     margin=1in

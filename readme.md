@@ -16,12 +16,9 @@ Welcome to BuildFair—your smart contract solution for secure, transparent, and
   - [Functions](#functions)
   - [Project Attributes](#project-attributes)
   - [Deployment Guide](#deployment-guide)
-    - [Prerequisites](#prerequisites)
-    - [Deployment Steps](#deployment-steps)
   - [Development Setup](#development-setup)
     - [Using Nix (Recommended)](#using-nix-recommended)
     - [Manual Setup (Alternative)](#manual-setup-alternative)
-  - [License](#license)
   - [Contact](#contact)
 
 ## Overview
@@ -58,13 +55,13 @@ The diagram above illustrates how users interact with the BuildFair protocol, sh
 
 ## Functions
 
-- `createProject()`: Creates a new project. 🌱
+- `createProject()`: Creates a new project 🌱.
 - `fundProject()`: Buyer funds the project 💵.
 - `submitWork()`: Seller submits completed work 🏗️. _(Coming in future release)_
 - `approveWork()`: Buyer approves work and releases payment 💸. _(Coming in future release)_
 - `raiseDispute()`: Either party may raise a dispute if issues arise 🚨. _(Coming in future release)_
 - `resolveDispute()`: Jury resolves the dispute and directs fund allocation ⚖️. _(Coming in future release)_
-- `endProject()`: Finalizes the project upon successful completion 🎉.
+- `endProject()`: Finalizes the project upon successful completion 🎉. Seller receives funds 💵. 
 
 ## Project Attributes
 
@@ -76,14 +73,6 @@ The diagram above illustrates how users interact with the BuildFair protocol, sh
 - `details`: Project details.
 
 ## Deployment Guide
-
-### Prerequisites
-
-- Solidity version 0.8.0 or higher.
-- Ethereum Wallet (e.g., MetaMask) for managing transactions.
-- Access to an Ethereum Node (testnet like Goerli or Sepolia).
-
-### Deployment Steps
 
 1. **Access Remix IDE**
    - Visit [Remix IDE](https://remix.ethereum.org)
@@ -167,13 +156,9 @@ pnpm install
 cd contract && forge install
 ```
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
-For questions or feedback, please reach out at [your-email@example.com] 📧.
+For questions or feedback, please reach out at [helenaboing@gmail.com] 📧.
 
 ---
 
