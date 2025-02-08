@@ -1,4 +1,4 @@
-# 🛠️ BuildFair: Construction Contract with Jury 🏗️
+# 🛠️ BuildFair: Construction Project with Jury 🏗️
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/212f8524-c1dd-45ab-a855-db003d25aca4/deploy-status)](https://app.netlify.com/sites/buildfair/deploys)
 
@@ -6,13 +6,14 @@ Welcome to BuildFair—your smart contract solution for secure, transparent, and
 
 ## Table of Contents
 
-- [🛠️ BuildFair: Construction Contract with Jury 🏗️](#️-buildfair-construction-contract-with-jury-️)
+- [🛠️ BuildFair: Construction Project with Jury 🏗️](#️-buildfair-construction-project-with-jury-️)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Features](#features)
   - [Roles](#roles)
-  - [Contract States](#contract-states)
+  - [Project States](#project-states)
   - [Functions](#functions)
+  - [Project Attributes](#project-attributes)
   - [Deployment Guide](#deployment-guide)
     - [Prerequisites](#prerequisites)
     - [Deployment Steps](#deployment-steps)
@@ -26,39 +27,49 @@ Welcome to BuildFair—your smart contract solution for secure, transparent, and
 
 ## Overview
 
-BuildFair ensures that payments are made only after validated milestones are achieved, protecting all parties and providing a foolproof framework for resolving disputes. Enjoy straightforward, transparent agreements with zero grey areas.
+BuildFair ensures that payments are made only after validated work is achieved, protecting all parties and providing a foolproof framework for resolving disputes. Enjoy straightforward, transparent agreements with zero grey areas. _(Milestone and dispute resolution features coming in future releases)_
 
 ## Features
 
-- **Buyer**: Funds the contract and approves completed milestones.
-- **Seller**: Marks and submits evidence for completed milestones, triggering payment.
-- **Jury**: Acts as a neutral mediator to resolve disputes fairly.
+- **Buyer**: Funds the project and approves work completion.
+- **Seller**: Executes construction tasks and submits evidence of completion.
+- **Jury**: Acts as a neutral mediator to resolve disputes fairly. _(To be implemented in future releases)_
+- **Milestones**: Break down projects into verifiable stages. _(Coming in future releases)_
 
 ## Roles
 
 | Role                | Description                                                                   |
 |---------------------|-------------------------------------------------------------------------------|
 | 👩‍💼 **Buyer**      | Funds the project and verifies completed work.                              |
-| 👷 **Seller**       | Executes construction tasks and marks milestones as complete.               |
-| ⚖️ **Jury**         | A neutral party that resolves disputes between buyers and sellers.            |
+| 👷 **Seller**       | Executes construction tasks and submits completion evidence.                 |
+| ⚖️ **Jury**         | A neutral party that resolves disputes between buyers and sellers. _(Coming soon)_ |
 
-## Contract States
+## Project States
 
-- **Created (📝)**: Contract created but unfunded.
+- **Created (📝)**: Project created but unfunded.
 - **Funded (💰)**: Buyer has deposited funds.
-- **InProgress (🔨)**: A milestone is under review after the seller's submission.
-- **Completed (✅)**: Milestone approved and payment disbursed.
-- **Disputed (🚨)**: A dispute has been raised; awaits jury resolution.
-- **Closed (🔒)**: Contract finalized and funds distributed accordingly.
+- **InProgress (🔨)**: Work is under review after the seller's submission.  _(Future feature)_
+- **Disputed (🚨)**: A dispute has been raised; awaits jury resolution. _(Future feature)_
+- **Ended (✅)**: Project finalized and funds distributed accordingly.
 
 ## Functions
 
-- `fundContract()`: Buyer funds the contract 💵.
-- `markMilestoneCompleted()`: Seller marks a milestone as complete 🏗️.
-- `approveMilestone()`: Buyer approves a milestone and releases payment 💸.
-- `raiseDispute()`: Either party may raise a dispute if issues arise 🚨.
-- `resolveDispute()`: Jury resolves the dispute and directs fund allocation ⚖️.
-- `endContract()`: Finalizes the contract upon successful completion or dispute resolution 🎉.
+- `createProject()`: Creates a new project. 🌱
+- `fundProject()`: Buyer funds the project 💵.
+- `submitWork()`: Seller submits completed work 🏗️. _(Coming in future release)_
+- `approveWork()`: Buyer approves work and releases payment 💸. _(Coming in future release)_
+- `raiseDispute()`: Either party may raise a dispute if issues arise 🚨. _(Coming in future release)_
+- `resolveDispute()`: Jury resolves the dispute and directs fund allocation ⚖️. _(Coming in future release)_
+- `endProject()`: Finalizes the project upon successful completion 🎉.
+
+## Project Attributes
+
+- `projectId`: Unique identifier for the project.
+- `buyer`: Address of the buyer.
+- `seller`: Address of the seller.
+- `amount`: Amount of funds in the project.
+- `status`: Current status of the project.
+- `details`: Project details.
 
 ## Deployment Guide
 
@@ -79,18 +90,18 @@ BuildFair ensures that payments are made only after validated milestones are ach
    npm install --save-dev hardhat
    ```
 
-2. **Create the Contract**
+2. **Create the Project**
 
-   Place your smart contract code in the `contracts/` directory (e.g., `contracts/ConstructionContract.sol`).
+   Place your smart contract code in the `contracts/` directory (e.g., `contracts/BuildFairProject.sol`).
 
-3. **Deploy the Contract**
+3. **Deploy the Project**
 
    **Using Truffle:**
    ```javascript
-   const ConstructionContract = artifacts.require("ConstructionContract");
+   const BuildFairProject = artifacts.require("BuildFairProject");
 
    module.exports = function (deployer) {
-     deployer.deploy(ConstructionContract, sellerAddress, juryAddress, contractAmount, milestoneAmount);
+     deployer.deploy(BuildFairProject, sellerAddress, juryAddress, projectAmount);
    };
    ```
 
@@ -98,25 +109,24 @@ BuildFair ensures that payments are made only after validated milestones are ach
    ```javascript
    async function main() {
      const [deployer] = await ethers.getSigners();
-     const ConstructionContract = await ethers.getContractFactory("ConstructionContract");
-     const contract = await ConstructionContract.deploy(sellerAddress, juryAddress, contractAmount, milestoneAmount);
-     console.log("Contract deployed to:", contract.address);
+     const BuildFairProject = await ethers.getContractFactory("BuildFairProject");
+     const project = await BuildFairProject.deploy(sellerAddress, juryAddress, projectAmount);
+     console.log("Project deployed to:", project.address);
    }
    
    main();
    ```
 
-4. **Interact with the Contract**
+4. **Interact with the Project**
 
-   Utilize Web3.js or Ethers.js to interact with the deployed contract.
+   Utilize Web3.js or Ethers.js to interact with the deployed project.
 
 ## Example Use Case
 
-1. **Funding**: Buyer deposits 10 ETH into the contract 💰.
-2. **Milestone Completion**: Seller submits evidence for a completed milestone 🏗️.
-3. **Approval & Payment**: Buyer validates the work and releases 2 ETH to the seller 💸.
-4. **Dispute Resolution**: If issues emerge, a dispute is raised 🚨 and the jury intervenes ⚖️.
-5. **Completion**: The process repeats until all milestones are met and the contract is closed 🔒.
+1. **Funding**: Buyer deposits ETH into the project 💰.
+2. **Work Completion**: Seller submits evidence for completed work 🏗️.
+3. **Approval & Payment**: Buyer validates the work and releases payment to the seller 💸.
+4. **Completion**: Process continues until all work is completed and the project is closed 🔒.
 
 ## Security Considerations
 
