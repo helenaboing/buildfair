@@ -31,8 +31,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }} ${{ github.event.head_commit.message }}
+          tag_name: v${{ github.run_number }}
+          release_name: Release v${{ github.run_number }} ${{ github.event.head_commit.message }}
           draft: false
           prerelease: false
       - name: Upload Whitepaper
