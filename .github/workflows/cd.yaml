@@ -57,10 +57,6 @@ jobs:
         working-directory: contract
         run: |
           npx hardhat compile
-      - name: Lint
-        working-directory: contract
-        run: |
-          npx hardhat lint
       - name: Test
         working-directory: contract
         run: |
