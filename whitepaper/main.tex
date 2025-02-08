@@ -1,38 +1,18 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
-\usepackage{enumitem}
-\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amsmath}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{geometry}
 
-% Define JavaScript language for listings
-\lstdefinelanguage{JavaScript}{
-  keywords={async, await, break, case, catch, class, const, continue, debugger, default, delete, do, else, export, extends, finally, for, function, if, import, in, instanceof, new, return, super, switch, this, throw, try, typeof, var, void, while, with, yield, let},
-  sensitive=true,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]',
-  morestring=[b]",
-  morestring=[b]`
+\geometry{
+    a4paper,
+    margin=1in
 }
 
-% Configure listings style
-\lstset{
-  frame=single,
-  basicstyle=\ttfamily\small,
-  keywordstyle=\color{blue},
-  commentstyle=\color{green!60!black},
-  stringstyle=\color{red},
-  numbers=left,
-  numberstyle=\tiny,
-  numbersep=5pt,
-  breaklines=true,
-  showstringspaces=false,
-  tabsize=2
-}
-
-\title{BuildFair: Construction Contract with Jury}
+\title{BuildFair: A Decentralized Protocol for Secure Construction Agreements}
 \author{BuildFair Team}
 \date{\today}
 
@@ -41,133 +21,121 @@
 \maketitle
 
 \begin{abstract}
-BuildFair is a smart contract solution for the construction industry that ensures smooth relationships between buyers, sellers, and jurors. It provides transparency, milestone tracking, and a built-in dispute resolution system, making construction agreements transparent, fair, and secure.
+BuildFair is a decentralized Ethereum protocol designed to facilitate secure and transparent construction agreements between buyers and sellers. By leveraging smart contracts, BuildFair automates payment processes and ensures fair transactions while maintaining immutable records on the blockchain. This whitepaper presents the protocol's architecture, implementation details, and security considerations.
 \end{abstract}
 
-\section{Overview}
-BuildFair ensures that payments are only made once milestones are achieved and provides a jury system to resolve disputes. This eliminates grey areas and establishes clear, trusted agreements between parties.
+\tableofcontents
 
-\section{Features}
+\section{Introduction}
+The construction industry often faces challenges related to payment security, work verification, and dispute resolution. Traditional contracts can lead to delayed payments, trust issues, and costly legal disputes. BuildFair addresses these challenges through blockchain technology and smart contracts, providing a trustless environment for construction agreements.
+
+\section{Protocol Overview}
+\subsection{Core Components}
 \begin{itemize}
-    \item \textbf{Buyer:} Funds the contract and approves completed work
-    \item \textbf{Seller:} Marks milestones as completed and receives payments once verified
-    \item \textbf{Jury:} A neutral party who steps in if there's a dispute, helping to resolve any issues fairly
+    \item Smart Contract System
+    \item Project Management
+    \item Payment Automation
+    \item Work Verification
 \end{itemize}
 
-\section{Roles}
-\begin{table}[h]
-\begin{tabular}{ll}
-\toprule
-\textbf{Role} & \textbf{Description} \\
-\midrule
-Buyer & The one funding the project and verifying if the work is completed \\
-Seller & The one doing the hard work and completing the construction milestones \\
-Jury & The trusted third-party mediator who settles any disputes \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{Contract States}
+\subsection{Key Features}
 \begin{itemize}
-    \item \textbf{Created:} The contract is created, but not yet funded
-    \item \textbf{Funded:} The buyer has funded the contract
-    \item \textbf{InProgress:} The seller has marked a milestone as completed, and the buyer is reviewing it
-    \item \textbf{Completed:} The milestone is approved, and payment is made
-    \item \textbf{Disputed:} A dispute is raised—time for the jury to step in
-    \item \textbf{Closed:} The contract is completed or resolved, and the funds are disbursed
+    \item Automated payment release upon work verification
+    \item Secure fund escrow
+    \item Transparent project tracking
+    \item Immutable record keeping
 \end{itemize}
 
-\section{Functions}
+\section{Architecture}
+\subsection{Smart Contract Design}
+The BuildFair smart contract implements a state machine pattern with the following states:
 \begin{itemize}
-    \item \texttt{fundContract()}: The buyer funds the contract
-    \item \texttt{markMilestoneCompleted()}: The seller marks a milestone as complete
-    \item \texttt{approveMilestone()}: The buyer approves the milestone and makes a payment
-    \item \texttt{raiseDispute()}: Either party can raise a dispute if something's not right
-    \item \texttt{resolveDispute()}: The jury resolves the dispute and decides who gets the money
-    \item \texttt{endContract()}: The contract ends, either by successful completion or dispute resolution
+    \item Created: Initial project setup
+    \item Funded: Buyer has deposited funds
+    \item Ended: Project completion and fund distribution
 \end{itemize}
 
-\section{Deployment Guide}
-
-\subsection{Prerequisites}
+\subsection{Role-Based Access Control}
+The protocol defines three primary roles:
 \begin{itemize}
-    \item Solidity version 0.8.0 or higher
-    \item Ethereum Wallet: MetaMask or another wallet to interact with the contract
-    \item Ethereum Node: A test network (e.g., Rinkeby, Goerli) or mainnet
+    \item Buyer: Funds projects and approves work completion
+    \item Seller: Executes construction tasks and submits completion evidence
+    \item Future: Jury system for dispute resolution
 \end{itemize}
 
-\subsection{Deployment Steps}
+\section{Technical Implementation}
+\subsection{Smart Contract Functions}
+\begin{lstlisting}[language=Solidity]
+// Core Functions
+function createProject(address seller, string details)
+function fundProject(uint256 projectId)
+function submitWork(uint256 projectId)
+function approveWork(uint256 projectId)
+function endProject(uint256 projectId)
+\end{lstlisting}
+
+\subsection{Project Lifecycle}
 \begin{enumerate}
-    \item \textbf{Install Dependencies}
-    
-    Install Truffle or Hardhat for deployment:
-    \begin{lstlisting}[language=bash]
-npm install -g truffle
-# or
-npm install --save-dev hardhat
-    \end{lstlisting}
-
-    \item \textbf{Create the Contract}
-    \begin{itemize}
-        \item Add the smart contract code in the \texttt{contracts/} directory
-        \item Example: \texttt{contracts/ConstructionContract.sol}
-    \end{itemize}
-
-    \item \textbf{Deploy the Contract}
-    
-    Using Truffle:
-    \begin{lstlisting}[language=JavaScript]
-const ConstructionContract = artifacts.require("ConstructionContract");
-
-module.exports = function (deployer) {
-  deployer.deploy(ConstructionContract, sellerAddress, juryAddress, 
-    contractAmount, milestoneAmount);
-};
-    \end{lstlisting}
-
-    Using Hardhat:
-    \begin{lstlisting}[language=JavaScript]
-async function main() {
-  const [deployer] = await ethers.getSigners();
-  const ConstructionContract = await ethers.getContractFactory(
-    "ConstructionContract"
-  );
-
-  const contract = await ConstructionContract.deploy(
-    sellerAddress, juryAddress, contractAmount, milestoneAmount
-  );
-  console.log("Contract deployed to:", contract.address);
-}
-
-main();
-    \end{lstlisting}
-
-    \item \textbf{Interact with the Contract}
-    \begin{itemize}
-        \item Use Web3.js or Ethers.js to interact with the contract once deployed
-    \end{itemize}
-\end{enumerate}
-
-\section{Example Use Case}
-\begin{enumerate}
-    \item Buyer funds the contract with 10 ETH
-    \item Seller completes the first milestone
-    \item Buyer approves the milestone and pays the seller 2 ETH
-    \item If the Seller disagrees or there's a problem, a dispute is raised
-    \item The Jury resolves the dispute and decides who gets the funds
+    \item Project Creation: Buyer initiates project with seller assignment
+    \item Project Funding: Buyer deposits ETH into smart contract
+    \item Work Execution: Seller performs construction work
+    \item Work Verification: Buyer approves completed work
+    \item Payment Distribution: Smart contract releases funds to seller
 \end{enumerate}
 
 \section{Security Considerations}
+\subsection{Smart Contract Security}
 \begin{itemize}
-    \item Make sure your jury is a trusted party who can resolve disputes fairly
-    \item Verify milestones carefully to avoid conflicts or fraudulent claims
-    \item Gas Fees: Be mindful of the Ethereum gas costs when deploying and interacting with the contract on the blockchain
+    \item Reentrancy protection
+    \item Access control validation
+    \item State transition verification
+    \item Secure fund handling
 \end{itemize}
 
-\section{License}
-This project is licensed under the MIT License - see the LICENSE file for details.
+\subsection{Future Security Enhancements}
+\begin{itemize}
+    \item Multi-signature requirements
+    \item Time-locked operations
+    \item Jury system implementation
+    \item Dispute resolution mechanism
+\end{itemize}
 
-\section{Contact}
-Have questions or feedback? Reach out to us at \href{mailto:helenaboingg@gmail.com}{helenaboingg@gmail.com}
+\section{Future Development}
+\subsection{Planned Features}
+\begin{itemize}
+    \item Milestone-based payments
+    \item Jury system for dispute resolution
+    \item Enhanced evidence submission system
+    \item Multi-party project support
+\end{itemize}
+
+\subsection{Protocol Upgrades}
+\begin{itemize}
+    \item Governance implementation
+    \item Protocol fee structure
+    \item Cross-chain compatibility
+    \item Layer 2 scaling solutions
+\end{itemize}
+
+\section{Economic Model}
+\subsection{Token Economics}
+Future iterations may include:
+\begin{itemize}
+    \item Protocol governance token
+    \item Staking mechanisms
+    \item Jury incentivization
+    \item Fee distribution model
+\end{itemize}
+
+\section{Conclusion}
+BuildFair represents a significant step forward in modernizing construction agreements through blockchain technology. By providing a secure, transparent, and automated platform, the protocol addresses key challenges in the construction industry while laying the groundwork for future enhancements and expanded functionality.
+
+\section{References}
+\begin{enumerate}
+    \item Ethereum Yellow Paper
+    \item Smart Contract Best Practices
+    \item Construction Industry Payment Standards
+    \item Blockchain-based Payment Systems
+\end{enumerate}
 
 \end{document}
