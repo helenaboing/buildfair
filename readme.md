@@ -1,6 +1,6 @@
 # 🛠️ BuildFair: Construction Project with Jury 🏗️
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/212f8524-c1dd-45ab-a855-db003d25aca4/deploy-status)](https://app.netlify.com/sites/buildfair/deploys)
+![Vercel Deploy](https://deploy-badge.vercel.app/vercel/buildfair?style=for-the-badge&name=Website)
 
 Welcome to BuildFair—your smart contract solution for secure, transparent, and fair construction agreements between buyers, sellers, and jurors.
 
@@ -158,7 +158,7 @@ cd contract && forge install
 
 ## Contact
 
-For questions or feedback, please reach out at [helenaboing@gmail.com] 📧.
+For questions or feedback, please reach out at [helenaboing@gmail.com](mailto:helenaboing@gmail.com) 📧.
 
 ---
 
