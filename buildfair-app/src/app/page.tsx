@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Building2,
   FileText,
@@ -88,6 +89,30 @@ export default function Home() {
         </div>
       </div>
 
+      {/* User Flows Diagram */}
+      <div className="bg-white py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:text-center">
+            <h2 className="text-base font-semibold leading-7 text-indigo-600">
+              User Flows
+            </h2>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              How Users Interact with BuildFair
+            </p>
+          </div>
+          <div className="mx-auto mt-16 flex justify-center">
+            <Image
+              src="/userflows.png"
+              alt="BuildFair User Flows Diagram"
+              width={1200}
+              height={800}
+              className="rounded-lg shadow-lg"
+              priority
+            />
+          </div>
+        </div>
+      </div>
+
       {/* How It Works Section */}
       <div className="bg-gray-50 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -172,7 +197,7 @@ export default function Home() {
           </div>
           <div className="mt-8 md:order-1 md:mt-0">
             <p className="text-center text-xs leading-5 text-gray-500">
-              &copy; 2024 BuildFair. All rights reserved.
+              &copy; 2025 BuildFair. All rights reserved.
             </p>
           </div>
         </div>

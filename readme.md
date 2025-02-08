@@ -9,6 +9,7 @@ Welcome to BuildFair—your smart contract solution for secure, transparent, and
 - [🛠️ BuildFair: Construction Project with Jury 🏗️](#️-buildfair-construction-project-with-jury-️)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
+  - [User Flows](#user-flows)
   - [Features](#features)
   - [Roles](#roles)
   - [Project States](#project-states)
@@ -28,6 +29,11 @@ Welcome to BuildFair—your smart contract solution for secure, transparent, and
 ## Overview
 
 BuildFair ensures that payments are made only after validated work is achieved, protecting all parties and providing a foolproof framework for resolving disputes. Enjoy straightforward, transparent agreements with zero grey areas. _(Milestone and dispute resolution features coming in future releases)_
+
+## User Flows
+![BuildFair User Flows](buildfair-app/public/userflows.png)
+
+The diagram above illustrates how users interact with the BuildFair protocol, showing the flow of actions between buyers and sellers.
 
 ## Features
 
