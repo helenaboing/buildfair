@@ -15,15 +15,21 @@ buildfair-app/.vercel/
 buildfair-app/next-env.d.ts
 .turbo
 
-# Foundry & Solidity (root level ignores)
+# Foundry & Solidity
 **/out/
 **/cache/
 **/cache_forge/
 **/artifacts/
 **/typechain-types/
-**/broadcast/*/*/
-!**/broadcast/*/.chainId
+!/broadcast
+/broadcast/*/31337/
+/broadcast/**/dry-run/
 **/.coverage_*/
+.coverage_artifacts/
+.coverage_cache/
+.coverage_contracts/
+lcov.info
+coverage/
 
 # Environment & Secrets
 **/.env
