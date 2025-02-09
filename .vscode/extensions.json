@@ -7,7 +7,6 @@
     // Testing & Development
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "streetsidesoftware.code-spell-checker",
     // Git & Collaboration
     "eamodio.gitlens",
     "github.vscode-pull-request-github",
