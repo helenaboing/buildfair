@@ -4,7 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "🛠️ BuildFair | Smart Construction Agreements",
+  title: "BuildFair | Smart Construction Agreements 🛠️",
   description:
     "BuildFair—your smart contract solution for secure, transparent, and fair construction agreements between buyers, sellers, and jurors.",
   icons: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   themeColor: "#ffffff",
   viewport: "width=device-width, initial-scale=1.0",
   openGraph: {
-    title: "🛠️ BuildFair | Smart Construction Agreements",
+    title: "BuildFair | Smart Construction Agreements 🛠️",
     description:
       "Secure, transparent, and fair construction agreements powered by smart contracts",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],

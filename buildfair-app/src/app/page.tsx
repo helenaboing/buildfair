@@ -7,6 +7,7 @@ import {
   GraduationCap,
   Github,
 } from "lucide-react";
+import AnimatedTitle from "./components/AnimatedTitle";
 
 export default function Home() {
   return (
@@ -15,9 +16,7 @@ export default function Home() {
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              🛠️ BuildFair 🏗️
-            </h1>
+            <AnimatedTitle />
             <p className="mt-6 text-lg leading-8 text-gray-600">
               A decentralized Ethereum protocol that automates payments and
               ensures fair construction agreements between buyers and sellers.
@@ -85,6 +84,34 @@ export default function Home() {
                 </dd>
               </div>
             </dl>
+          </div>
+        </div>
+      </div>
+
+      {/* Video Demo Section */}
+      <div className="bg-gray-50 py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:text-center">
+            <h2 className="text-base font-semibold leading-7 text-indigo-600">
+              Video Demo
+            </h2>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Watch BuildFair in Action
+            </p>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              See how to deploy and interact with the BuildFair smart contract.
+            </p>
+          </div>
+          <div className="mx-auto mt-16 flex justify-center">
+            <div className="aspect-w-16 aspect-h-9 w-full max-w-4xl">
+              <iframe
+                src="https://www.youtube.com/embed/3LFcuid21XA"
+                title="BuildFair Demo & Walkthrough"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg shadow-lg"
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
