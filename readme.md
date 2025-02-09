@@ -1,6 +1,6 @@
 # 🛠️ BuildFair: Construction Project with Jury 🏗️
 
-![Vercel Deploy](https://deploy-badge.vercel.app/vercel/buildfair?style=for-the-badge&name=Website)
+[![Vercel Deploy](https://deploy-badge.vercel.app/vercel/buildfair?style=for-the-badge&name=Website)](https://buildfair.vercel.app)
 
 Welcome to BuildFair—your smart contract solution for secure, transparent, and fair construction agreements between buyers, sellers, and jurors.
 
