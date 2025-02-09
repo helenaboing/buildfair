@@ -29,12 +29,12 @@ contract BuildFairTest is Test {
     }
 
     function test_CreateProject() public {
-        vm.startPrank(buyer);
+        vm.startPrank(seller);
 
         vm.expectEmit(true, true, true, true);
         emit ProjectCreated(0, buyer, seller, projectDetails);
 
-        uint256 projectId = buildFair.createProject(seller, projectDetails);
+        uint256 projectId = buildFair.createProject(buyer, projectAmount, projectDetails);
         assertEq(projectId, 0, "First project should have ID 0");
 
         (
@@ -49,7 +49,7 @@ contract BuildFairTest is Test {
         assertEq(returnedId, projectId, "Project ID mismatch");
         assertEq(returnedBuyer, buyer, "Buyer address mismatch");
         assertEq(returnedSeller, seller, "Seller address mismatch");
-        assertEq(returnedAmount, 0, "Initial amount should be 0");
+        assertEq(returnedAmount, projectAmount, "Initial amount should match input");
         assertEq(
             uint256(returnedStatus),
             uint256(BuildFair.ProjectStatus.Created),
@@ -60,24 +60,26 @@ contract BuildFairTest is Test {
         vm.stopPrank();
     }
 
-    function test_CreateProject_InvalidSeller() public {
-        vm.startPrank(buyer);
-        vm.expectRevert(abi.encodeWithSignature("InvalidSellerAddress()"));
-        buildFair.createProject(address(0), projectDetails);
+    function test_CreateProject_InvalidBuyer() public {
+        vm.startPrank(seller);
+        vm.expectRevert(abi.encodeWithSignature("InvalidBuyerAddress()"));
+        buildFair.createProject(address(0), projectAmount, projectDetails);
         vm.stopPrank();
     }
 
     function test_CreateProject_EmptyDetails() public {
-        vm.startPrank(buyer);
+        vm.startPrank(seller);
         vm.expectRevert(abi.encodeWithSignature("EmptyDetails()"));
-        buildFair.createProject(seller, "");
+        buildFair.createProject(buyer, projectAmount, "");
         vm.stopPrank();
     }
 
     function test_FundProject() public {
-        vm.startPrank(buyer);
-        uint256 projectId = buildFair.createProject(seller, projectDetails);
+        vm.startPrank(seller);
+        uint256 projectId = buildFair.createProject(buyer, projectAmount, projectDetails);
+        vm.stopPrank();
 
+        vm.startPrank(buyer);
         vm.expectEmit(true, true, false, true);
         emit ProjectFunded(projectId, projectAmount);
 
@@ -96,9 +98,9 @@ contract BuildFairTest is Test {
     }
 
     function test_FundProject_OnlyBuyer() public {
-        // Create project as buyer
-        vm.startPrank(buyer);
-        uint256 projectId = buildFair.createProject(seller, projectDetails);
+        // Create project as seller
+        vm.startPrank(seller);
+        uint256 projectId = buildFair.createProject(buyer, projectAmount, projectDetails);
         vm.stopPrank();
 
         // Try to fund as seller (should fail)
@@ -109,8 +111,11 @@ contract BuildFairTest is Test {
     }
 
     function test_FundProject_InvalidState() public {
+        vm.startPrank(seller);
+        uint256 projectId = buildFair.createProject(buyer, projectAmount, projectDetails);
+        vm.stopPrank();
+
         vm.startPrank(buyer);
-        uint256 projectId = buildFair.createProject(seller, projectDetails);
         buildFair.fundProject{ value: projectAmount }(projectId);
 
         vm.expectRevert(
@@ -126,8 +131,11 @@ contract BuildFairTest is Test {
 
     function test_EndProject() public {
         // Setup project and fund it
+        vm.startPrank(seller);
+        uint256 projectId = buildFair.createProject(buyer, projectAmount, projectDetails);
+        vm.stopPrank();
+
         vm.startPrank(buyer);
-        uint256 projectId = buildFair.createProject(seller, projectDetails);
         buildFair.fundProject{ value: projectAmount }(projectId);
 
         uint256 initialSellerBalance = seller.balance;
@@ -154,8 +162,11 @@ contract BuildFairTest is Test {
     }
 
     function test_EndProject_OnlyBuyer() public {
+        vm.startPrank(seller);
+        uint256 projectId = buildFair.createProject(buyer, projectAmount, projectDetails);
+        vm.stopPrank();
+
         vm.startPrank(buyer);
-        uint256 projectId = buildFair.createProject(seller, projectDetails);
         buildFair.fundProject{ value: projectAmount }(projectId);
         vm.stopPrank();
 
@@ -166,9 +177,11 @@ contract BuildFairTest is Test {
     }
 
     function test_EndProject_InvalidState() public {
-        vm.startPrank(buyer);
-        uint256 projectId = buildFair.createProject(seller, projectDetails);
+        vm.startPrank(seller);
+        uint256 projectId = buildFair.createProject(buyer, projectAmount, projectDetails);
+        vm.stopPrank();
 
+        vm.startPrank(buyer);
         vm.expectRevert(
             abi.encodeWithSignature(
                 "InvalidProjectState(uint8,uint8)",

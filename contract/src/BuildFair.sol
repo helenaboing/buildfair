@@ -10,7 +10,7 @@ contract BuildFair {
     error OnlyBuyer();
     error OnlySeller();
     error ProjectNotFound();
-    error InvalidSellerAddress();
+    error InvalidBuyerAddress();
     error EmptyDetails();
     error MustBeSendingFunds();
     error InvalidProjectState(ProjectStatus current, ProjectStatus required);
@@ -63,25 +63,29 @@ contract BuildFair {
 
     /**
      * @dev Creates a new construction project
-     * @param _seller Address of the seller/contractor
+     * @param _buyer Address of the buyer/client
+     * @param _amount Amount required for the project
      * @param _details Project details (IPFS hash or direct string)
      */
-    function createProject(address _seller, string memory _details) external returns (uint256) {
-        if (_seller == address(0)) revert InvalidSellerAddress();
+    function createProject(address _buyer, uint256 _amount, string memory _details)
+        external
+        returns (uint256)
+    {
+        if (_buyer == address(0)) revert InvalidBuyerAddress();
         if (bytes(_details).length == 0) revert EmptyDetails();
 
         uint256 projectId = nextProjectId++;
 
         projects[projectId] = Project({
             projectId: projectId,
-            buyer: msg.sender,
-            seller: _seller,
-            amount: 0,
+            buyer: _buyer,
+            seller: msg.sender,
+            amount: _amount,
             status: ProjectStatus.Created,
             details: _details
         });
 
-        emit ProjectCreated(projectId, msg.sender, _seller, _details);
+        emit ProjectCreated(projectId, _buyer, msg.sender, _details);
         return projectId;
     }
 
