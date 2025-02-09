@@ -1,5 +1,6 @@
 import { type Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
+import aspectRatio from "@tailwindcss/aspect-ratio";
 
 export default {
   content: ["./src/**/*.tsx"],
@@ -13,5 +14,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [aspectRatio],
 } satisfies Config;
